@@ -12,8 +12,11 @@ class PlayersRepo(context: Context) {
     }
 
     fun loadAllPlayers(): LiveData<List<Player>> = db.getPlayersDAO().loadAllPlayers()
+
     fun insertPlayers(vararg players: Player): List<Long> =
         db.getPlayersDAO().insertPlayers(*players)
+
+    suspend fun numberOfPlayers(): Int = db.getPlayersDAO().numberOfPlayers()
 
     fun deletePlayers(vararg players: Player): Int = db.getPlayersDAO().deletePlayers(*players)
 }

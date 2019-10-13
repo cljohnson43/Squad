@@ -32,8 +32,14 @@ data class Player private constructor(
     @ColumnInfo(name = Player.COLUMN_SMALL_HEADSHOT_URL) val smallHeadshotUrl: String?,
     @ColumnInfo(name = Player.COLUMN_LARGE_HEADSHOT_URL) val largeHeadshotUrl: String?,
     @ColumnInfo(name = Player.COLUMN_TEAM_BRAND_URL) val teamBrandUrl: String?,
-    @ColumnInfo(name = Player.COLUMN_BACKGROUND_COLOR) val backgroundColor: String?
-) {
+    @ColumnInfo(name = Player.COLUMN_BACKGROUND_COLOR) val backgroundColor: String?,
+    @ColumnInfo(name = Player.COLUMN_NUMBER) val number: String?,
+    @ColumnInfo(name = Player.COLUMN_APG) val apg: String?,
+    @ColumnInfo(name = Player.COLUMN_PPG) val ppg: String?,
+    @ColumnInfo(name = Player.COLUMN_RPG) val rpg: String?,
+    @ColumnInfo(name = Player.COLUMN_TEAM) val team: String?,
+    @ColumnInfo(name = Player.COLUMN_LAST_SEASON) val lastSeason: String?
+    ) {
     constructor(
         firstName: String,
         lastName: String,
@@ -43,7 +49,13 @@ data class Player private constructor(
         smallHeadshotUrl: String?,
         largeHeadshotUrl: String?,
         teamBrandUrl: String?,
-        backgroundColor: String?
+        backgroundColor: String?,
+        lastSeason: String?,
+        team: String?,
+        rpg: String?,
+        ppg: String?,
+        apg: String?,
+        number: String?
     ) : this(
         firstName = firstName,
         lastName = lastName,
@@ -54,7 +66,13 @@ data class Player private constructor(
         smallHeadshotUrl = smallHeadshotUrl,
         largeHeadshotUrl = largeHeadshotUrl,
         backgroundColor = backgroundColor,
-        teamBrandUrl = teamBrandUrl
+        teamBrandUrl = teamBrandUrl,
+        lastSeason = lastSeason,
+        apg = apg,
+        rpg = rpg,
+        ppg = ppg,
+        number = number,
+        team = team
     )
 
     companion object {
@@ -68,15 +86,12 @@ data class Player private constructor(
         const val COLUMN_LARGE_HEADSHOT_URL = "large_headshot_url"
         const val COLUMN_BACKGROUND_COLOR = "background_color"
         const val COLUMN_TEAM_BRAND_URL = "team_brand_url"
-
-        /*const val COLUMN_NUMBER = "number"
-        const val COLUMN_POSITION = "position"
+        const val COLUMN_NUMBER = "number"
+        //const val COLUMN_POSITION = "position"
         const val COLUMN_TEAM = "team"
         const val COLUMN_PPG = "ppg"
         const val COLUMN_APG = "apg"
         const val COLUMN_RPG = "rpg"
         const val COLUMN_LAST_SEASON = "last_season"
-
-         */
     }
 }

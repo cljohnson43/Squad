@@ -8,8 +8,16 @@ import androidx.room.Query
 
 @Dao
 interface PlayersDAO {
-    @Query("SELECT * FROM ${Player.TABLE_NAME}")
+    @Query(
+        """
+        SELECT * 
+        FROM ${Player.TABLE_NAME} 
+        ORDER BY ${Player.COLUMN_LAST_NAME} ASC, ${Player.COLUMN_FIRST_NAME} ASC"""
+    )
     fun loadAllPlayers(): LiveData<List<Player>>
+
+    @Query("SELECT COUNT(*) FROM ${Player.TABLE_NAME}")
+    suspend fun numberOfPlayers(): Int
 
     @Insert
     fun insertPlayers(vararg players: Player): List<Long>
