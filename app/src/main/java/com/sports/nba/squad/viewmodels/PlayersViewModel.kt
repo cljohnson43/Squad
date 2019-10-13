@@ -13,14 +13,15 @@ class PlayersViewModel(application: Application) : AndroidViewModel(application)
     private val playersRepo: PlayersRepo by lazy { PlayersRepo(application.applicationContext)}
 
     init {
-        val dataStream: InputStream = application.resources.openRawResource(R.raw.nba_bios)
-        val playersJSONLoader = PlayersJSONLoader(dataStream)
-        dataStream.close()
+        if (playersRepo.loadAllPlayers().value?.size ?: 0 == 0) {
+            val dataStream: InputStream = application.resources.openRawResource(R.raw.nba_bios)
+            val playersJSONLoader = PlayersJSONLoader(dataStream)
+            dataStream.close()
 
-        playersJSONLoader.players.forEach{
-            playersRepo.insertPlayers(it)
+            playersJSONLoader.players.forEach{
+                playersRepo.insertPlayers(it)
+            }
         }
-
     }
 
     fun getAllPlayers(): LiveData<List<Player>> = playersRepo.loadAllPlayers()
