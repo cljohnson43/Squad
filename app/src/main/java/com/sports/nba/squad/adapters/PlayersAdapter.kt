@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sports.nba.squad.R
 import com.sports.nba.squad.data.Player
+import com.sports.nba.squad.utils.Image
 
 class PlayersAdapter : ListAdapter<Player, PlayersAdapter.PlayersViewHolder>(PlayerDiffUtil()) {
 
@@ -22,7 +23,7 @@ class PlayersAdapter : ListAdapter<Player, PlayersAdapter.PlayersViewHolder>(Pla
     override fun onBindViewHolder(holder: PlayersViewHolder, position: Int) {
         getItem(position).also {
             holder.tvPlayerName.text = "${it.firstName} ${it.lastName}"
-            //holder.ivPlayerHeadshot
+            Image.fromUrl(holder.ivPlayerHeadshot, it.headshotURL)
         }
     }
 

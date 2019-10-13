@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/iv_player_headshot"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="105dp"
             android:contentDescription="Player Headshot"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
