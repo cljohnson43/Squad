@@ -23,7 +23,7 @@ class PlayersAdapter : ListAdapter<Player, PlayersAdapter.PlayersViewHolder>(Pla
     override fun onBindViewHolder(holder: PlayersViewHolder, position: Int) {
         getItem(position).also {
             holder.tvPlayerName.text = "${it.firstName} ${it.lastName}"
-            Image.fromUrl(holder.ivPlayerHeadshot, it.headshotURL)
+            Image.fromUrl(holder.ivPlayerHeadshot, it.smallHeadshotUrl)
         }
     }
 

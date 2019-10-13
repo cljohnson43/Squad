@@ -29,7 +29,10 @@ data class Player private constructor(
     @ColumnInfo(name = Player.COLUMN_BORN) val born: String,
     @ColumnInfo(name = Player.COLUMN_HOMETOWN) val hometown: String,
     @ColumnInfo(name = Player.COLUMN_URL) val url: String,
-    @ColumnInfo(name = Player.COLUMN_HEAD_SHOT_URL) val headshotURL: String?
+    @ColumnInfo(name = Player.COLUMN_SMALL_HEADSHOT_URL) val smallHeadshotUrl: String?,
+    @ColumnInfo(name = Player.COLUMN_LARGE_HEADSHOT_URL) val largeHeadshotUrl: String?,
+    @ColumnInfo(name = Player.COLUMN_TEAM_BRAND_URL) val teamBrandUrl: String?,
+    @ColumnInfo(name = Player.COLUMN_BACKGROUND_COLOR) val backgroundColor: String?
 ) {
     constructor(
         firstName: String,
@@ -37,7 +40,10 @@ data class Player private constructor(
         born: String,
         hometown: String,
         url: String,
-        headshotURL: String?
+        smallHeadshotUrl: String?,
+        largeHeadshotUrl: String?,
+        teamBrandUrl: String?,
+        backgroundColor: String?
     ) : this(
         firstName = firstName,
         lastName = lastName,
@@ -45,7 +51,10 @@ data class Player private constructor(
         id = null,
         hometown = hometown,
         url = url,
-        headshotURL = headshotURL
+        smallHeadshotUrl = smallHeadshotUrl,
+        largeHeadshotUrl = largeHeadshotUrl,
+        backgroundColor = backgroundColor,
+        teamBrandUrl = teamBrandUrl
     )
 
     companion object {
@@ -55,7 +64,10 @@ data class Player private constructor(
         const val COLUMN_BORN = "born"
         const val COLUMN_HOMETOWN = "hometown"
         const val COLUMN_URL = "url"
-        const val COLUMN_HEAD_SHOT_URL = "head_shot"
+        const val COLUMN_SMALL_HEADSHOT_URL = "small_headshot_url"
+        const val COLUMN_LARGE_HEADSHOT_URL = "large_headshot_url"
+        const val COLUMN_BACKGROUND_COLOR = "background_color"
+        const val COLUMN_TEAM_BRAND_URL = "team_brand_url"
 
         /*const val COLUMN_NUMBER = "number"
         const val COLUMN_POSITION = "position"
