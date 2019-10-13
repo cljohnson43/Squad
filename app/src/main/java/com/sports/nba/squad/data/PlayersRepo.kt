@@ -19,4 +19,22 @@ class PlayersRepo(context: Context) {
     suspend fun numberOfPlayers(): Int = db.getPlayersDAO().numberOfPlayers()
 
     fun deletePlayers(vararg players: Player): Int = db.getPlayersDAO().deletePlayers(*players)
+
+    fun addPlayerToSquad(player: Player): Unit {
+        player.id?.let {
+            return db.getSquadDAO().insertToSquad(SquadSpot(it))
+        }
+
+        return
+    }
+
+    fun removePlayerFromSquad(player: Player): Int {
+        player.id?.let {
+            return db.getSquadDAO().deleteFromSquad(SquadSpot(it))
+        }
+
+        return 0
+    }
+
+    fun getSquad(): LiveData<List<SquadSpot>> = db.getSquadDAO().loadSquad()
 }

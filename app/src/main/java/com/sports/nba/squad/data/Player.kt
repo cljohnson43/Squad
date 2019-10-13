@@ -77,6 +77,7 @@ data class Player private constructor(
 
     companion object {
         const val TABLE_NAME = "players"
+        const val COLUMN_ID = "id"
         const val COLUMN_FIRST_NAME = "first_name"
         const val COLUMN_LAST_NAME = "last_name"
         const val COLUMN_BORN = "born"
