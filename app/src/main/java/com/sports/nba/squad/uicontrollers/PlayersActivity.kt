@@ -1,4 +1,4 @@
-package com.sports.nba.squad.views
+package com.sports.nba.squad.uicontrollers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,5 +18,10 @@ class PlayersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_players)
+
+        supportFragmentManager.beginTransaction().apply {
+            add(R.id.fl_fragment_container, PlayerListFragment())
+            commit()
+        }
     }
 }
