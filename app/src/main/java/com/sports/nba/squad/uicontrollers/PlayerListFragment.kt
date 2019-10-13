@@ -33,8 +33,8 @@ class PlayerListFragment : Fragment(){
         return inflater.inflate(R.layout.fragment_player_list, container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         val adapter = PlayersAdapter()
         rv_players.adapter = adapter
