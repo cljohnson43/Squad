@@ -2,17 +2,18 @@ package com.sports.nba.squad.uicontrollers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sports.nba.squad.R
 import com.sports.nba.squad.adapters.PlayersAdapter
 import com.sports.nba.squad.data.Player
+import com.sports.nba.squad.utils.Logger
 import com.sports.nba.squad.viewmodels.PlayersViewModel
-import java.lang.Exception
 
 class PlayersActivity : AppCompatActivity(), PlayersAdapter.PlayerSelector {
 
-    private val playersViewModel: ViewModel by lazy {
+    private val playersViewModel: PlayersViewModel by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(
             PlayersViewModel::class.java
         )
@@ -26,6 +27,8 @@ class PlayersActivity : AppCompatActivity(), PlayersAdapter.PlayerSelector {
             add(R.id.fl_fragment_container, PlayerListFragment())
             commit()
         }
+
+        subscribeUi()
     }
 
     override fun onPlayerSelected(player: Player) {
@@ -36,5 +39,17 @@ class PlayersActivity : AppCompatActivity(), PlayersAdapter.PlayerSelector {
             addToBackStack(null)
             commit()
         }
+    }
+
+    fun subscribeUi() {
+        playersViewModel.getSquad().observe(this, Observer { squadList ->
+            squadList?.forEach {
+                Logger.log(it.toString())
+            }
+        })
+    }
+
+    fun onClick() {
+        Logger.log("Click handled by PlayersActivity")
     }
 }

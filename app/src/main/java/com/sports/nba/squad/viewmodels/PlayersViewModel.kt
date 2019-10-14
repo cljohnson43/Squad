@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.sports.nba.squad.R
 import com.sports.nba.squad.data.Player
 import com.sports.nba.squad.data.PlayersRepo
+import com.sports.nba.squad.data.SquadSpot
 import com.sports.nba.squad.utils.PlayersJSONLoader
 import kotlinx.coroutines.launch
 import java.io.InputStream
@@ -32,4 +33,5 @@ class PlayersViewModel(application: Application) : AndroidViewModel(application)
     fun getAllPlayers(): LiveData<List<Player>> = playersRepo.loadAllPlayers()
     fun insertPlayers(vararg players: Player): List<Long> = playersRepo.insertPlayers(*players)
     fun deletePlayers(vararg players: Player): Int = playersRepo.deletePlayers(*players)
+    fun getSquad(): LiveData<List<SquadSpot>> = playersRepo.getSquad()
 }
