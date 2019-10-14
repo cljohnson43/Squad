@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Squad</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+    <string name="appwidget_text">Your Squad</string>
+    <string name="add_widget">Squad widget</string>
 </resources>

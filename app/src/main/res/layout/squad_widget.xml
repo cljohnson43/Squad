@@ -5,7 +5,7 @@
     android:padding="@dimen/widget_margin">
 
     <TextView
-        android:id="@+id/appwidget_text"
+        android:id="@+id/tv_widget_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -17,5 +17,12 @@
         android:textColor="#ffffff"
         android:textSize="24sp"
         android:textStyle="bold|italic" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appwidget_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </RelativeLayout>
