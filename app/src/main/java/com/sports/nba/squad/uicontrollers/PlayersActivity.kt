@@ -3,7 +3,6 @@ package com.sports.nba.squad.uicontrollers
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sports.nba.squad.R
 import com.sports.nba.squad.adapters.PlayersAdapter
@@ -33,7 +32,7 @@ class PlayersActivity : AppCompatActivity(), PlayersAdapter.PlayerSelector {
 
     override fun onPlayerSelected(player: Player) {
         supportFragmentManager.beginTransaction().apply {
-            val args = Bundle().apply { putInt(Player.ID_KEY, player.id!!) }
+            val args = Bundle().apply { putLong(Player.ID_KEY, player.id!!) }
             val detailFragment = PlayerDetailFragment().apply { arguments = args }
             replace(R.id.fl_fragment_container, detailFragment)
             addToBackStack(null)

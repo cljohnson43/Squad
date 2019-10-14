@@ -1,5 +1,6 @@
 package com.sports.nba.squad.data
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
@@ -17,7 +18,7 @@ interface PlayersDAO {
     fun loadAllPlayers(): LiveData<List<Player>>
 
     @Query("SELECT * FROM ${Player.TABLE_NAME} WHERE id = :id")
-    fun loadPlayer(id: Int): Player
+    fun loadPlayer(id: Long): Player
 
     @Query("SELECT COUNT(*) FROM ${Player.TABLE_NAME}")
     suspend fun numberOfPlayers(): Int
@@ -27,4 +28,12 @@ interface PlayersDAO {
 
     @Delete
     fun deletePlayers(vararg players: Player): Int
+
+    @Query(
+        """
+        SELECT * FROM ${Player.TABLE_NAME} as player
+        INNER JOIN ${SquadSpot.TABLE_NAME} AS squad
+        ON player.${Player.COLUMN_ID} = squad.${SquadSpot.COLUMN_PLAYER_ID}
+        """)
+    fun loadSquad(): Cursor
 }

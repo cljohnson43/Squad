@@ -5,13 +5,17 @@ import androidx.lifecycle.AndroidViewModel
 import com.sports.nba.squad.data.Player
 import com.sports.nba.squad.data.PlayersRepo
 
-class PlayerDetailViewModel(application: Application, private val playerId: Int?) :
+class PlayerDetailViewModel(application: Application) :
     AndroidViewModel(application) {
     private val playersRepo: PlayersRepo by lazy { PlayersRepo.getInsance(application.applicationContext) }
 
-    val player: Player by lazy { playersRepo.getPlayer(playerId!!)}
+    var player: Player? = null
+
+    fun setPlayer(playerId: Long) {
+        player = playersRepo.getPlayer(playerId!!)
+    }
 
     fun addPlayerToSquad() {
-        playersRepo.addPlayerToSquad(player)
+        playersRepo.addPlayerToSquad(player!!)
     }
 }

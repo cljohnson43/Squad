@@ -15,5 +15,5 @@ interface SquadDAO {
     fun insertToSquad(squadSpot: SquadSpot): Unit
 
     @Query("SELECT * FROM ${SquadSpot.TABLE_NAME}")
-    fun loadSquad(): LiveData<List<SquadSpot>>
+    fun getSquad(): LiveData<List<SquadSpot>>
 }

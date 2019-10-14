@@ -15,10 +15,10 @@ import androidx.room.PrimaryKey
     )
 )
 class SquadSpot private constructor(
-    @PrimaryKey(autoGenerate = true) var id: Int?,
-    @ColumnInfo(name = SquadSpot.COLUMN_PLAYER_ID) val playerId: Int?
+    @PrimaryKey(autoGenerate = true) var id: Long?,
+    @ColumnInfo(name = SquadSpot.COLUMN_PLAYER_ID) val playerId: Long?
 ) {
-    constructor(playerId: Int) : this(id = null, playerId = playerId)
+    constructor(playerId: Long) : this(id = null, playerId = playerId)
 
     companion object {
         const val TABLE_NAME = "squad"

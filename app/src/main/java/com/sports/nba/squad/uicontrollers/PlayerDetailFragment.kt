@@ -19,15 +19,13 @@ class PlayerDetailFragment : Fragment() {
 
     private val playerDetailViewModel: PlayerDetailViewModel by lazy {
         activity?.let {
-            ViewModelProvider(
-                it, PlayerDetailViewModelFactory(
-                    it.application, this.arguments?.getInt(
-                        Player.ID_KEY
-                    )
-                )
-            ).get(
+            val playerId = this.arguments?.getLong(Player.ID_KEY)
+            ViewModelProvider(it, PlayerDetailViewModelFactory(it.application)).get(
                 PlayerDetailViewModel::class.java
-            )
+            ).apply {
+                setPlayer(playerId!!)
+            }
+
         } ?: throw Exception("Invalid Activity")
     }
 
@@ -37,14 +35,14 @@ class PlayerDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_player_details, container, false)
-        Image.fromUrl(view.iv_big_headshot, playerDetailViewModel.player.largeHeadshotUrl)
+        Image.fromUrl(view.iv_big_headshot, playerDetailViewModel.player?.largeHeadshotUrl)
         view.findViewById<FloatingActionButton>(R.id.fab_add_player)?.apply {
             setOnClickListener {
                 this@PlayerDetailFragment.playerDetailViewModel.addPlayerToSquad()
                 val player = this@PlayerDetailFragment.playerDetailViewModel.player
                 Toast.makeText(
                     this@PlayerDetailFragment.context,
-                    "${player.firstName} ${player.lastName} added to your Squad",
+                    "${player?.firstName} ${player?.lastName} added to your Squad",
                     Toast.LENGTH_SHORT
                 ).show()
                 hide()

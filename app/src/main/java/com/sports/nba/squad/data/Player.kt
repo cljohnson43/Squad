@@ -23,7 +23,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = Player.TABLE_NAME)
 data class Player private constructor(
-    @PrimaryKey(autoGenerate = true) var id: Int? = null,
+    @PrimaryKey(autoGenerate = true) var id: Long? = null,
     @ColumnInfo(name = Player.COLUMN_FIRST_NAME) val firstName: String,
     @ColumnInfo(name = Player.COLUMN_LAST_NAME) val lastName: String,
     @ColumnInfo(name = Player.COLUMN_BORN) val born: String,

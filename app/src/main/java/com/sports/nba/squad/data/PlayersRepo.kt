@@ -1,6 +1,7 @@
 package com.sports.nba.squad.data
 
 import android.content.Context
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 
@@ -13,7 +14,7 @@ class PlayersRepo private constructor(context: Context) {
 
     fun loadAllPlayers(): LiveData<List<Player>> = db.getPlayersDAO().loadAllPlayers()
 
-    fun getPlayer(id: Int): Player = db.getPlayersDAO().loadPlayer(id)
+    fun getPlayer(id: Long): Player = db.getPlayersDAO().loadPlayer(id)
 
     fun insertPlayers(vararg players: Player): List<Long> =
         db.getPlayersDAO().insertPlayers(*players)
@@ -38,7 +39,11 @@ class PlayersRepo private constructor(context: Context) {
         return 0
     }
 
-    fun getSquad(): LiveData<List<SquadSpot>> = db.getSquadDAO().loadSquad()
+    fun getSquad(): LiveData<List<SquadSpot>> = db.getSquadDAO().getSquad()
+
+    fun loadSquad(): Cursor = db.getPlayersDAO().loadSquad()
+
+    fun removeFromSquad(id: Long): Int = db.getSquadDAO().deleteFromSquad(SquadSpot(id))
 
     companion object {
         private var instance: PlayersRepo? = null
