@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.sports.nba.squad.provider"
+            android:name="com.sports.nba.squad.providers.SquadProvider"
+            android:enabled="true"
+            android:exported="true"
+            />
     </application>
 
 </manifest>
