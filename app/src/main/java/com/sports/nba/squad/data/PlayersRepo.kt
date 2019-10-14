@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 
-class PlayersRepo(context: Context) {
+class PlayersRepo private constructor(context: Context) {
     private val db: SquadDB by lazy {
         Room.databaseBuilder(context, SquadDB::class.java, SquadDB.DB_NAME)
             .allowMainThreadQueries()
@@ -12,6 +12,8 @@ class PlayersRepo(context: Context) {
     }
 
     fun loadAllPlayers(): LiveData<List<Player>> = db.getPlayersDAO().loadAllPlayers()
+
+    fun getPlayer(id: Int): Player = db.getPlayersDAO().loadPlayer(id)
 
     fun insertPlayers(vararg players: Player): List<Long> =
         db.getPlayersDAO().insertPlayers(*players)
@@ -37,4 +39,18 @@ class PlayersRepo(context: Context) {
     }
 
     fun getSquad(): LiveData<List<SquadSpot>> = db.getSquadDAO().loadSquad()
+
+    companion object {
+        private var instance: PlayersRepo? = null
+
+        @Synchronized
+        fun getInsance(context: Context): PlayersRepo {
+            if (instance == null) {
+                instance = PlayersRepo(context)
+                return instance!!
+            }
+
+            return instance!!
+        }
+    }
 }

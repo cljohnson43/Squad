@@ -35,7 +35,7 @@ class PlayerListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val adapter = PlayersAdapter()
+        val adapter = PlayersAdapter((activity as PlayersAdapter.PlayerSelector)!!)
         rv_players.adapter = adapter
         rv_players.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -45,4 +45,5 @@ class PlayerListFragment : Fragment() {
     fun subscribeUi(adapter: PlayersAdapter) {
         playersViewModel.getAllPlayers().observe(this, Observer { adapter.submitList(it) })
     }
+
 }

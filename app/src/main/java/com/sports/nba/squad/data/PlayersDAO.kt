@@ -16,6 +16,9 @@ interface PlayersDAO {
     )
     fun loadAllPlayers(): LiveData<List<Player>>
 
+    @Query("SELECT * FROM ${Player.TABLE_NAME} WHERE id = :id")
+    fun loadPlayer(id: Int): Player
+
     @Query("SELECT COUNT(*) FROM ${Player.TABLE_NAME}")
     suspend fun numberOfPlayers(): Int
 

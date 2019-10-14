@@ -94,5 +94,6 @@ data class Player private constructor(
         const val COLUMN_APG = "apg"
         const val COLUMN_RPG = "rpg"
         const val COLUMN_LAST_SEASON = "last_season"
+        const val ID_KEY = "player_id_key"
     }
 }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.io.InputStream
 
 class PlayersViewModel(application: Application) : AndroidViewModel(application) {
-    private val playersRepo: PlayersRepo by lazy { PlayersRepo(application.applicationContext)}
+    private val playersRepo: PlayersRepo by lazy { PlayersRepo.getInsance(application.applicationContext)}
 
     init {
         viewModelScope.launch {
