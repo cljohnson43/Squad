@@ -1,24 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="player"
+            type="com.sports.nba.squad.data.Player" />
+    </data>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     >
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:backgroundColor="@{player.backgroundColor}"
+    >
 
     <ImageView
-        android:id="@+id/iv_big_headshot"
+        android:id="@+id/iv_team_logo"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_big_headshot"
+        android:layout_width="250dp"
+        android:layout_height="285dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_team_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_first_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{player.firstName.toUpperCase()}"
+        tools:text="FIRST NAME"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_big_headshot"
+        />
+    <TextView
+        android:id="@+id/tv_last_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{player.lastName.toUpperCase()}"
+        tools:text="LAST NAME"
+        app:layout_constraintStart_toStartOf="@id/tv_first_name"
+        app:layout_constraintEnd_toEndOf="@id/tv_first_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_first_name"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -30,10 +70,11 @@
         android:layout_margin="@dimen/double_spacing"
         android:onClick="onClick"
         app:srcCompat="@drawable/ic_add_24dp"
-        app:layout_anchor="@id/iv_big_headshot"
+        app:layout_anchor="@id/iv_team_logo"
         app:layout_anchorGravity="bottom|right"
         />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
 
 
 
