@@ -46,7 +46,7 @@
         android:id="@+id/tv_name_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_spacing"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="@dimen/double_spacing"
         tools:text="NUMBER FIRST LAST"
         android:textSize="@dimen/large_font"
@@ -58,23 +58,15 @@
         />
 
     <TextView
-        android:id="@+id/tv_position"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:text="POSITION"
-        app:layout_constraintStart_toStartOf="@id/tv_name_number"
-        app:layout_constraintEnd_toEndOf="@id/tv_name_number"
-        app:layout_constraintTop_toBottomOf="@id/tv_name_number"
-        />
-    <TextView
         android:id="@+id/tv_team"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="TEAM"
         android:text="@{player.team}"
+        android:textSize="@dimen/font_size"
         app:layout_constraintStart_toStartOf="@id/tv_name_number"
         app:layout_constraintEnd_toEndOf="@id/tv_name_number"
-        app:layout_constraintTop_toBottomOf="@id/tv_position"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_number"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -82,9 +74,9 @@
         android:id="@+id/fab_add_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
         android:layout_margin="@dimen/double_spacing"
         android:onClick="onClick"
+        app:backgroundTint="@{player.secondaryColor}"
         app:srcCompat="@drawable/ic_add_24dp"
         app:layout_anchor="@id/iv_big_headshot"
         app:layout_anchorGravity="bottom|right"

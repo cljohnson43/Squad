@@ -20,6 +20,7 @@ import androidx.room.PrimaryKey
 // "rpg": null,
 // "apg": null,
 // "last_season": null},
+// "secondaryColor": null},
 
 @Entity(tableName = Player.TABLE_NAME)
 data class Player private constructor(
@@ -33,6 +34,7 @@ data class Player private constructor(
     @ColumnInfo(name = Player.COLUMN_LARGE_HEADSHOT_URL) val largeHeadshotUrl: String?,
     @ColumnInfo(name = Player.COLUMN_TEAM_BRAND_URL) val teamBrandUrl: String?,
     @ColumnInfo(name = Player.COLUMN_BACKGROUND_COLOR) val backgroundColor: String?,
+    @ColumnInfo(name = Player.COLUMN_SECONDARY_COLOR) val secondaryColor: String?,
     @ColumnInfo(name = Player.COLUMN_NUMBER) val number: String?,
     @ColumnInfo(name = Player.COLUMN_APG) val apg: String?,
     @ColumnInfo(name = Player.COLUMN_PPG) val ppg: String?,
@@ -50,6 +52,7 @@ data class Player private constructor(
         largeHeadshotUrl: String?,
         teamBrandUrl: String?,
         backgroundColor: String?,
+        secondaryColor: String?,
         lastSeason: String?,
         team: String?,
         rpg: String?,
@@ -66,6 +69,7 @@ data class Player private constructor(
         smallHeadshotUrl = smallHeadshotUrl,
         largeHeadshotUrl = largeHeadshotUrl,
         backgroundColor = backgroundColor,
+        secondaryColor = secondaryColor,
         teamBrandUrl = teamBrandUrl,
         lastSeason = lastSeason,
         apg = apg,
@@ -86,6 +90,7 @@ data class Player private constructor(
         const val COLUMN_SMALL_HEADSHOT_URL = "small_headshot_url"
         const val COLUMN_LARGE_HEADSHOT_URL = "large_headshot_url"
         const val COLUMN_BACKGROUND_COLOR = "background_color"
+        const val COLUMN_SECONDARY_COLOR = "secondary_color"
         const val COLUMN_TEAM_BRAND_URL = "team_brand_url"
         const val COLUMN_NUMBER = "number"
         //const val COLUMN_POSITION = "position"
