@@ -42,8 +42,6 @@ class PlayerDetailFragment : Fragment() {
             false
         )
         binding.player = playerDetailViewModel.player
-        Image.fromUrl(binding.ivBigHeadshot, binding.player?.largeHeadshotUrl)
-        Image.fromUrl(binding.ivTeamLogo, binding.player?.teamBrandUrl)
         binding.fabAddPlayer?.apply {
             setOnClickListener {
                 this@PlayerDetailFragment.playerDetailViewModel.addPlayerToSquad()

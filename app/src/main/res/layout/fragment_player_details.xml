@@ -24,17 +24,20 @@
 
     <ImageView
         android:id="@+id/iv_team_logo"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        app:fromUrl="@{player.teamBrandUrl}"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+       />
 
     <ImageView
         android:id="@+id/iv_big_headshot"
         android:layout_width="250dp"
         android:layout_height="285dp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_team_logo"
+        android:layout_marginTop="70dp"
+        app:fromUrl="@{player.largeHeadshotUrl}"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
@@ -70,7 +73,7 @@
         android:layout_margin="@dimen/double_spacing"
         android:onClick="onClick"
         app:srcCompat="@drawable/ic_add_24dp"
-        app:layout_anchor="@id/iv_team_logo"
+        app:layout_anchor="@id/iv_big_headshot"
         app:layout_anchorGravity="bottom|right"
         />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
