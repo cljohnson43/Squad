@@ -43,26 +43,39 @@
         />
 
     <TextView
-        android:id="@+id/tv_first_name"
+        android:id="@+id/tv_name_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@{player.firstName.toUpperCase()}"
-        tools:text="FIRST NAME"
+        android:layout_marginTop="@dimen/double_spacing"
+        android:layout_marginLeft="@dimen/double_spacing"
+        tools:text="NUMBER FIRST LAST"
+        android:textSize="@dimen/large_font"
+        android:textStyle="bold"
+        app:playerLabel="@{player}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_big_headshot"
         />
+
     <TextView
-        android:id="@+id/tv_last_name"
+        android:id="@+id/tv_position"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@{player.lastName.toUpperCase()}"
-        tools:text="LAST NAME"
-        app:layout_constraintStart_toStartOf="@id/tv_first_name"
-        app:layout_constraintEnd_toEndOf="@id/tv_first_name"
-        app:layout_constraintTop_toBottomOf="@id/tv_first_name"
+        tools:text="POSITION"
+        app:layout_constraintStart_toStartOf="@id/tv_name_number"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_number"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_number"
         />
-
+    <TextView
+        android:id="@+id/tv_team"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="TEAM"
+        android:text="@{player.team}"
+        app:layout_constraintStart_toStartOf="@id/tv_name_number"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_number"
+        app:layout_constraintTop_toBottomOf="@id/tv_position"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
